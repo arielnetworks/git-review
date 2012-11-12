@@ -1,0 +1,17 @@
+#!/bin/sh
+
+TRAC_URL=`git config --get trac.url`
+TRAC_REALM=`git config --get trac.realm`
+TRAC_USER=`git config --get trac.user`
+TRAC_PASSWORD=`git config --get trac.password`
+
+REVIEW_GROUP=`git config --get reviewboard.group`
+
+rv-wrap.py \
+    --trac-user=$TRAC_USER \
+    --trac-password=$TRAC_PASSWORD \
+    --review-group=$REVIEW_GROUP \
+    --trac-url=$TRAC_URL \
+    --trac-realm="$TRAC_REALM" "$@"
+
+
