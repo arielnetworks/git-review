@@ -33,7 +33,7 @@ RBTools と git は予め入れておく
 .git/config に以下のような設定を追記。
 trac の設定は、書かなければ反映されない。
 
-..
+::
 
   [reviewboard]
           # reviewboard の URL (必須)
