@@ -119,7 +119,7 @@ def get_commit_info(rev=None):
             stdout.append(line)
             break
 
-        msg.append(line.strip())
+        msg.append(line.rstrip())
 
     message = '\n'.join(msg)
 
