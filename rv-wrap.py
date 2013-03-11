@@ -78,6 +78,18 @@ class CommitInfo(object):
             return ('refs', int(m.group(1)))
 
 
+MSG_REGEX = re.compile('^    ')
+
+
+def message_strip(msg):
+    u'''
+    先頭の空白を4つほど削除
+    '''
+
+    return MSG_REGEX.sub('', msg).rstrip()
+
+
+
 def get_commit_info(rev=None):
     u'''
     git リポジトリからコミット情報を取ってくる
@@ -119,7 +131,7 @@ def get_commit_info(rev=None):
             stdout.append(line)
             break
 
-        msg.append(line.rstrip())
+        msg.append(message_strip(line))
 
     message = '\n'.join(msg)
 
