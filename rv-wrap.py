@@ -95,20 +95,20 @@ def get_commit_info(rev=None):
     git リポジトリからコミット情報を取ってくる
     '''
 
-    cmd = ['git', 'log', '-n', '1', '-u']
+    cmd = ['git', '--no-pager', 'log', '-n', '1', '-u']
 
     if rev is not None:
         cmd.append(rev)
 
     p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
+    stdout = list(reversed(p.stdout.readlines()))
+
     ret = p.wait()
 
     if ret != 0:
         print >> sys.stderr, p.stderr.read()
         sys.exit(ret)
-
-    stdout = list(reversed(p.stdout.readlines()))
 
     hash = stdout.pop().split()[1]
     headers = {}
