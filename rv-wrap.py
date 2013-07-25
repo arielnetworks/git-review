@@ -44,7 +44,7 @@ def make_parser():
 
 
 FIXED_REGEX = re.compile(r'^fix(?:ed)? #(\d+)')
-REFS_REGEX = re.compile(r'^refs? #(\d+)')
+REFS_REGEX = re.compile(r'^re(?:(?:f)s?)? #(\d+)')
 
 
 class CommitInfo(object):
