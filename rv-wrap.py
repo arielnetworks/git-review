@@ -200,7 +200,9 @@ def get_ticket_info_from_trac(args, ticket):
 
     value = iter(reader).next()
 
-    return dict((k.decode(encode), v.decode(encode)) for k, v in value.iteritems())
+    return dict((k.decode(encode).strip(u'\ufeff'),
+                 v.decode(encode))
+                for k, v in value.iteritems())
 
 
 
