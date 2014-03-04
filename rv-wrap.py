@@ -233,7 +233,7 @@ def get_review_info(ticket):
 
     server.login()
 
-    results = server.api_get('/api/review-requests')
+    results = server.api_get('/api/review-requests/')
 
     ticket = unicode(ticket)
 
